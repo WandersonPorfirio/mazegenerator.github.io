@@ -1,6 +1,8 @@
 (function () {
 
-	var canvas, ctx;
+	var rows = 10, cols = 10;
+
+	var canvas, ctx, tileSize;
 
 	function createCanvas (w, h) {
 		canvas = document.createElement('canvas');
@@ -12,7 +14,29 @@
 
 		ctx = canvas.getContext('2d');
 
+		tileSize = canvas.width / rows;
+
+		tabuleiro = fillMatrix(rows, cols);
+
 		update();
+	};
+
+
+	function fillMatrix (w, h) { // rows, cols
+		let matrix = [];
+
+		while (h--) {
+			let preserve_W = 0, row = [];
+
+			while (w > preserve_W) {
+				row.push(new Spot(preserve_W, h, tileSize));
+				preserve_W++;
+			};
+
+			matrix.unshift(row);
+		};
+
+		return matrix;
 	};
 
 
