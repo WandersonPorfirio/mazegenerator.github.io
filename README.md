@@ -1,2 +1,3 @@
-# mazegenerator.github.io
+# Maze Generator
+
 Maze Generator in Javascript
